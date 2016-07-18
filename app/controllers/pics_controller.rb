@@ -15,7 +15,7 @@ class PicsController < ApplicationController
   def create
     @pic = Pic.new(pic_params)
     if @pic.save
-      redirect_to @pic, notice: "Pic posted!"
+      redirect_to @pic, notice: "Pic sucessfully posted!"
     else
       render 'new'
     end
@@ -25,11 +25,11 @@ class PicsController < ApplicationController
   end
 
   def update
-    # if @pic.update(params[:pic].permit(:title, :description))
-    #   redirect_to @pic
-    # else
-    #   render 'edit'
-    # end
+    if @pic.update(pic_params)
+      redirect_to @pic, notice: "Pic sucessfully updated!"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
